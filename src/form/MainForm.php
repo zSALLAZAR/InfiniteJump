@@ -16,13 +16,10 @@ use zsallazar\infinitejump\session\Session;
 final class MainForm extends CustomForm{
     public function __construct() {
         parent::__construct(TF::BOLD . TF::GREEN . "InfiniteJump", [
-            new Dropdown("Mode", "", [
-                "normal" => "Normal",
-                "nostop" =>"NoStop"
-            ])
+            new Dropdown("Mode", "", ["Normal", "NoStop"])
         ], static function(Player $player, CustomFormResponse $data): void{
-            $mode = match ($data->getString("Mode")) {
-                "nostop" => new NoStopMode(),
+            $mode = match ($data->getInt("Mode")) {
+                1 => new NoStopMode(),
                 default => new NormalMode()
             };
             $session = Session::get($player);
