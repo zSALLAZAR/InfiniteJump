@@ -1,5 +1,5 @@
 name: InfiniteJump
-description:
+description: Jump to infinity!
 main: zsallazar\infinitejump\InfiniteJump
 src-namespace-prefix: zsallazar\infinitejump
 version: 0.0.1
@@ -7,5 +7,5 @@ api: 5.0.0
 author: zSALLAZAR
 
 permissions:
-  ffa.command:
+  infinitejump.command:
     default: true
