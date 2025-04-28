@@ -5,3 +5,7 @@ src-namespace-prefix: zsallazar\infinitejump
 version: 0.0.1
 api: 5.0.0
 author: zSALLAZAR
+
+permissions:
+  ffa.command:
+    default: true

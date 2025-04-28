@@ -1,0 +1,13 @@
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/zSALLAZAR/FFA
+build-by-default: true
+branches:
+  - main
+projects:
+  InfiniteJump:
+    path: ""
+    libs:
+      - src: dktapps-pm-pl/pmforms/pmforms
+        version: ^2.3.0
+    lint:
+      phpstan: false
+...

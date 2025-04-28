@@ -31,7 +31,6 @@ use pocketmine\lang\KnownTranslationFactory;
 use pocketmine\math\Facing;
 use pocketmine\math\Vector3;
 use pocketmine\world\sound\RecordSound;
-use pocketmine\world\World;
 use function array_rand;
 use function mt_rand;
 
@@ -39,9 +38,7 @@ class NormalMode extends Mode{
     /** @var Block[] */
     private array $randomBlocks;
 
-    public function __construct(World $world) {
-        parent::__construct($world);
-
+    public function __construct() {
         $this->prepareRandomBlocks();
     }
 

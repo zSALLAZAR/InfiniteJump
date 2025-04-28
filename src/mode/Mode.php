@@ -17,6 +17,8 @@ use function array_key_last;
 use function mt_rand;
 
 abstract class Mode{
+    protected World $world;
+
     /** @phpstan-var array<int, Section> */
     private array $sections;
 
@@ -24,10 +26,6 @@ abstract class Mode{
      * @phpstan-return array<int, Section>
      */
     final public function getSections(): array{ return $this->sections; }
-
-    public function __construct(
-        protected World $world //TODO: Is this needed?
-    ) {}
 
     abstract protected function createSection(Vector3 $pos): Section;
 
@@ -39,15 +37,17 @@ abstract class Mode{
         return $lastSection->getFirstPosition()->add($x, $y, $z);
     }
 
-    final public function start(): Position{
-        $spawn = $this->world->getSpawnLocation();
+    final public function start(World $world): Position{
+        $this->world = $world;
+
+        $spawn = $world->getSpawnLocation();
         $blockPos = $spawn->subtract(0, 1, 0);
         $startBlock = VanillaBlocks::BEDROCK();
 
         $section = new Section();
         $section->add($blockPos, $startBlock);
 
-        $this->world->setBlock($blockPos, $startBlock);
+        $world->setBlock($blockPos, $startBlock);
         $this->sections[] = $section;
 
         for ($i = 0; $i < 5; $i++) {
