@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace zsallazar\infinitejump\session;
 
+use InvalidArgumentException;
 use pocketmine\entity\Location;
 use pocketmine\math\Vector3;
 use pocketmine\player\GameMode;
@@ -47,6 +48,9 @@ final class Session{
     public function getMode(): Mode{ return $this->mode; }
 
     public function setMode(Mode $mode): void{
+        if (isset($this->mode)) {
+            throw new InvalidArgumentException("Mode is already set");
+        }
         $this->mode = $mode;
     }
 
