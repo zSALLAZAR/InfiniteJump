@@ -17,6 +17,8 @@ final class InfiniteJump extends PluginBase{
     }
 
     protected function onEnable(): void{
+        self::setInstance($this);
+
         GeneratorManager::getInstance()->addGenerator(VoidGenerator::class, "Void", fn() => null);
 
         $server = $this->getServer();
